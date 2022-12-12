@@ -127,10 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LZ77.c++" />
+    <ClCompile Include="LZ78.c++" />
     <ClCompile Include="main.c++" />
     <ClCompile Include="RLE.c++" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LZ77.h" />
+    <ClInclude Include="LZ78.h" />
     <ClInclude Include="RLE.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

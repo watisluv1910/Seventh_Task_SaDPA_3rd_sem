@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 
 #include "RLE.h";
+#include "LZ77.h";
+#include "LZ78.h";
 
 void printMenu();
 double compressionRatio(std::string input, std::string output);
@@ -39,7 +41,16 @@ int main()
 		}
 		case 2:
 		{
-			
+			// Test LZ77 encoding with 0100101010010000101
+			std::string input = "0100101010010000101";
+			std::list<LZ77_Node> output = LZ77::Encode(input);
+			std::cout << "\nInput string: " << input << '\n';
+			std::cout << "\nEncoded string:\n";
+			for (auto& node : output)
+			{
+				std::cout << node.offset << " " << node.length << " " << node.next << '\n';
+			}
+			std::cout << "\nDecoded string:\n" << LZ77::Decode(output) << '\n';
 			break;
 		}
 		case 3:
@@ -74,8 +85,8 @@ void printMenu()
 	std::cout << "Practical task num.7\nIKBO-24-21 Nasevich V.V.\n"
 		"Variant num. 16.\n\nMenu:\n"
 		"1)Enter <1> to run RLE.\n"
-		"2)Enter <2> to initialize red-black tree.\n"
-		"3)Enter <3> to rewrite a txt file.\n"
+		"2)Enter <2> to run LZ77.\n"
+		"3)Enter <3> to run LZ78.\n"
 		"4)Enter <0> to exit.\n";
 }
 
