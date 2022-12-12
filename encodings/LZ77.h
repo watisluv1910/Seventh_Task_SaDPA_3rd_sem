@@ -3,7 +3,8 @@
 #include <string>
 #include <list>
 
-using namespace std;
+using std::list;
+using std::string;
 
 struct LZ77_Node
 {

@@ -26,6 +26,7 @@ int main()
 		{
 		case 1:
 		{
+			// Test RLE
 			std::string input = "WWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW";
 			std::string output = RLE::Encode(input);
 			std::cout << "\nInput string with long sequencies: " << input << '\n';
@@ -54,6 +55,25 @@ int main()
 			break;
 		}
 		case 3:
+		{
+			// Test LZ78 encoding with roporopoterropoterter
+			std::string input = "roporopoterropoterter";
+			std::list<LZ78_Node> output = LZ78::Encode(input);
+			std::cout << "\nInput string: " << input << '\n';
+			std::cout << "\nEncoded string:\n";
+			std::string output_string = "";
+			for (auto& node : output)
+			{
+				// Form output string
+				output_string += std::to_string(node.index);
+				output_string += node.next;
+			}
+			std::cout << output_string << '\n';
+			std::cout << "\nDecoded string:\n" << LZ78::Decode(output) << '\n';
+			std::cout << "\nEncoding compression ratio:\n" << compressionRatio(input, output_string) << '\n';
+			break;
+		}
+		case 4:
 		{
 			
 			break;
@@ -87,6 +107,7 @@ void printMenu()
 		"1)Enter <1> to run RLE.\n"
 		"2)Enter <2> to run LZ77.\n"
 		"3)Enter <3> to run LZ78.\n"
+		"4)Enter <4> to run LZ78.\n"
 		"4)Enter <0> to exit.\n";
 }
 
